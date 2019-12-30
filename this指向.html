@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    var cat = {
+        name: "喵喵",
+        eatFish: function (param1, param2) {
+            console.log("吃鱼");
+            console.log("this的指向=>");
+            console.log(this);
+            console.log(param1, param2);
+        }
+    }
+
+    var dog = {
+        name: "汪汪",
+        eatBone: function (param1, param2) {
+            console.log("啃骨头");
+            console.log("this的指向=>");
+            console.log(this);
+            console.log(param1, param2)
+        }
+    }
+
+    cat.eatFish('招财猫', 'cat')
+    dog.eatBone('旺财狗', 'dog')
+
+
+    // 改变this指向
+
+    //第一种，用call方法
+    cat.eatFish.call(dog, "旺财-13岁", "call");
+
+    //第二种，用apply方法，参数不一样
+    cat.eatFish.apply(dog, ["旺财-13岁", "apply"]);
+
+    //第三种,用bind方法,返回的是一个方法,还需要再次调用,后面加上括号   ()
+    cat.eatFish.bind(dog,"旺财-13岁", "bind")()
+</script>
+
+</html>
